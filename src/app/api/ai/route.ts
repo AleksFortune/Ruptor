@@ -1,4 +1,6 @@
-export async function POST(req) {
+import { NextRequest } from "next/server";
+export async function POST(req: NextRequest) {
+
   const { messages } = await req.json();
   const chatHistory = messages.map(m => ({
     role: m.from === "user" ? "user" : "assistant",
