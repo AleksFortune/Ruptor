@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest): Promise<NextResponse> {
   const params = Object.fromEntries(new URL(req.url).searchParams.entries());
-  // Здесь ты получаешь user_id, username и другие данные из Telegram
-  // Можно добавить проверку подписи (security), но для старта — просто выводи данные.
   console.log("Telegram login params:", params);
-  // Тут можно сделать авторизацию пользователя на сайте
-  return NextResponse.redirect('/gpt'); // Перенаправляем на страницу GPT чата
+
+  // Здесь обязательно указываем полный абсолютный путь редиректа
+  return NextResponse.redirect(new URL('/gpt', req.url));
 }
