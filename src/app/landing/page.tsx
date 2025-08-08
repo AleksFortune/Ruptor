@@ -1,147 +1,153 @@
-'use client';
+"use client";
 
-const FEATURES = [
-  {
-    title: 'Простота',
-    emoji: '⚡',
-    desc: 'Запусти RuptorGPT за 30 секунд! Не нужно настраивать ничего сложного — только твои вопросы и мгновенные ответы AI.',
-  },
-  {
-    title: 'Приватность',
-    emoji: '🛡️',
-    desc: 'Никаких сливов и рекламы. Переписка и твои данные доступны только тебе — приватный AI в облаке.',
-  },
-  {
-    title: 'Локализация',
-    emoji: '🌍',
-    desc: 'Поддержка русского и английского, лексика и стиль — для жизни, бизнеса и учёбы.',
-  },
-  {
-    title: 'Поддержка 24/7',
-    emoji: '💬',
-    desc: 'Оперативная поддержка через Telegram. Поможем в любой момент — просто напиши.',
-  },
-  {
-    title: 'AI без ограничений',
-    emoji: '🔓',
-    desc: 'Полная версия GPT — никаких лимитов, рекламы или обрезанных функций.',
-  },
-  {
-    title: 'Честная цена',
-    emoji: '💎',
-    desc: 'Один тариф, никаких скрытых условий. Всё для твоего комфорта.',
-  },
-];
+import React from "react";
 
-const CASES = [
-  {
-    title: 'GPT-ассистенты',
-    emoji: '🤖',
-    desc: 'AI-помощники для сайтов, CRM и мессенджеров. Автоматические ответы 24/7, быстрая настройка под задачи бизнеса.',
-  },
-  {
-    title: 'RAG-системы',
-    emoji: '🔍',
-    desc: 'Чат на ваших данных: отвечаем на вопросы по PDF, базе знаний или внутренним документам. Всё под ключ!',
-  },
-  {
-    title: 'AI для e-commerce',
-    emoji: '🛒',
-    desc: 'Генерация описаний товаров, прогнозы продаж и оттока, рекомендации для клиентов. Всё — автоматически.',
-  },
-  {
-    title: 'AI для логистики',
-    emoji: '🚚',
-    desc: 'Оптимизация маршрутов, прогноз поставок, анализ складских остатков. Повышай эффективность в пару кликов!',
-  },
-  {
-    title: 'AI для HR',
-    emoji: '👥',
-    desc: 'Автоматизация отбора, AI-интервью, быстрый разбор резюме и подбор сотрудников по soft skills.',
-  },
-  {
-    title: 'AI-видео и аватары',
-    emoji: '🎬',
-    desc: 'Генерация видео, создание цифровых аватаров, AI-озвучка с эмоциями и стилями.',
-  },
-];
+// Замени на свой путь если видео лежит в другом месте
+const VIDEO_SRC = "/space-bg.mp4";
 
-export default function Landing() {
+export default function LandingPage() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-start bg-black overflow-hidden">
+    <div className="relative min-h-screen w-full flex flex-col justify-start items-center overflow-x-hidden bg-black">
       {/* Фоновое видео */}
       <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="fixed inset-0 w-full h-full object-cover z-0 brightness-125 contrast-125"
+        src={VIDEO_SRC}
         autoPlay
         loop
         muted
         playsInline
-      >
-        <source src="/space-bg.mp4" type="video/mp4" />
-      </video>
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[#181922]/90 z-10"></div>
+      />
+      {/* Overlay для контраста */}
+      <div className="fixed inset-0 w-full h-full bg-[#151925]/60 z-10 pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl flex flex-col items-center px-4 py-16">
-        {/* HEADER */}
-        <h1 className="text-4xl md:text-6xl font-extrabold text-[#11eefa] mb-4 text-center tracking-tight font-[var(--font-geist)]">
-          RuptorGPT — Искусственный Интеллект для жизни и бизнеса
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 text-center max-w-2xl text-[#c7f3f4] font-[var(--font-geist)]">
-          Твой персональный AI, готовый к работе за секунды. Всё просто, быстро и удобно.
-        </p>
+      {/* Контент */}
+      <main className="relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center pt-28 pb-16 px-3">
+        {/* Логотип и заголовок */}
+        <div className="flex flex-col items-center mb-8">
+          <h1
+            className="text-6xl md:text-8xl font-extrabold text-[#19F4FF] drop-shadow-[0_0_16px_#1bfcffb0] tracking-wider text-center"
+            style={{ fontFamily: "'Orbitron', 'Geist', 'Arial', sans-serif", letterSpacing: "0.08em" }}
+          >
+            RUPTOR.AI
+          </h1>
+          <div className="mt-3 text-xl md:text-2xl text-[#bdfaff] font-medium text-center max-w-2xl" style={{ fontFamily: "'Geist', Arial, sans-serif" }}>
+            Новый уровень AI — приватно, просто, локально. Всё, что нужно — в одном чате. <br />
+            <span className="text-[#11eefa]">24/7 поддержка. Локализация. Простота. Безопасность.</span>
+          </div>
+        </div>
 
-        {/* Преимущества */}
-        <section className="w-full max-w-5xl mb-12">
-          <div className="text-3xl font-bold text-[#11eefa] mb-8 text-center font-[var(--font-geist)]">Преимущества RuptorGPT</div>
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-            {FEATURES.map((card, i) => (
-              <div key={i} className="bg-[#232436cc] rounded-2xl shadow-lg p-8 flex flex-col items-center justify-between border-2 border-[#11eefa22] hover:border-[#11eefa] transition duration-200 hover:shadow-xl min-h-[220px] group">
-                <span className="text-5xl mb-2">{card.emoji}</span>
-                <div className="text-xl font-bold text-[#11eefa] text-center mb-2 font-[var(--font-geist)]">{card.title}</div>
-                <div className="text-base text-center text-[#c7f3f4] font-[var(--font-geist)]">{card.desc}</div>
-              </div>
-            ))}
+        {/* Блок с преимуществами */}
+        <section className="w-full mt-8 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0fffc1] text-center mb-7 drop-shadow-[0_1px_10px_#00ffe555]" style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif" }}>
+            Преимущества RuptorGPT
+          </h2>
+          <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-7">
+            <AdvCard
+              icon="🛡️"
+              title="100% Приватность"
+              text="Ваши чаты и данные не уходят в облако. Безопасно для бизнеса и личного общения."
+            />
+            <AdvCard
+              icon="⚡"
+              title="Мгновенный старт"
+              text="Запуск за 1 минуту! Никаких сложных настроек — просто пользуйся."
+            />
+            <AdvCard
+              icon="🌎"
+              title="Полная локализация"
+              text="Интерфейс и поддержка на русском, английском и других языках. Всё для вашего удобства."
+            />
+            <AdvCard
+              icon="🤝"
+              title="Живая поддержка"
+              text="Поможем решить любой вопрос за минуты. Не боты — живые AI-эксперты."
+            />
           </div>
         </section>
 
-        {/* Как RuptorGPT помогает людям */}
-        <section className="w-full max-w-5xl mb-12">
-          <div className="text-3xl font-bold text-[#11eefa] mb-8 text-center font-[var(--font-geist)]">Как RuptorGPT помогает людям?</div>
+        {/* Блок "Как помогает" */}
+        <section className="w-full mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0fffc1] text-center mb-7 drop-shadow-[0_1px_10px_#00ffe555]" style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif" }}>
+            Как RuptorGPT помогает людям?
+          </h2>
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-            {CASES.map((card, i) => (
-              <div key={i} className="bg-[#232436cc] rounded-2xl shadow-lg p-8 flex flex-col items-center justify-between border-2 border-[#11eefa22] hover:border-[#11eefa] transition duration-200 hover:shadow-xl min-h-[220px] group">
-                <span className="text-5xl mb-2">{card.emoji}</span>
-                <div className="text-xl font-bold text-[#11eefa] text-center mb-2 font-[var(--font-geist)]">{card.title}</div>
-                <div className="text-base text-center text-[#c7f3f4] font-[var(--font-geist)]">{card.desc}</div>
-              </div>
-            ))}
+            <FeatureCard
+              icon="🤖"
+              title="AI для бизнеса"
+              text="Персональный AI-ассистент автоматизирует рутину, пишет документы и помогает вашим клиентам 24/7. Всегда учится под задачи."
+            />
+            <FeatureCard
+              icon="🔍"
+              title="Экспертные ответы"
+              text="Быстрый поиск по вашим PDF, файлам и базе знаний. RuptorGPT даст точный совет и найдёт нужную информацию за секунды."
+            />
+            <FeatureCard
+              icon="🛒"
+              title="AI для магазинов"
+              text="Генерируй продающие описания товаров, рекомендации и автоответы для клиентов — увеличь конверсию уже сегодня!"
+            />
+            <FeatureCard
+              icon="🚚"
+              title="AI-логистика"
+              text="Автоматический прогноз поставок, анализ маршрутов, оптимизация складов и учёт — забудь о рутине."
+            />
+            <FeatureCard
+              icon="👥"
+              title="AI для HR"
+              text="AI-интервьюер, анализ soft skills и быстрая фильтрация резюме — находи лучших кандидатов без труда."
+            />
+            <FeatureCard
+              icon="🎬"
+              title="AI-видео и аватары"
+              text="Создавай цифровых аватаров, видеоролики и презентации с AI-озвучкой и эмоциями — выделяйся на рынке."
+            />
+          </div>
+          <div className="mt-6 text-[#8ceefc] text-center text-lg" style={{ fontFamily: "'Geist', Arial, sans-serif" }}>
+            Нажмите на блок — узнаете больше!
           </div>
         </section>
 
         {/* Тариф и CTA */}
-        <section className="w-full max-w-lg bg-[#232436cc] rounded-2xl shadow-2xl p-8 flex flex-col items-center mb-12 border-2 border-[#11eefa22]">
-          <div className="text-3xl font-extrabold text-[#11eefa] mb-2 font-[var(--font-geist)]">Тариф — 990₽ / месяц</div>
-          <div className="text-[#c7f3f4] mb-6 text-center font-[var(--font-geist)]">
-            Всё включено. Один тариф — никаких скрытых условий и лимитов.
+        <section className="w-full mt-5">
+          <div className="flex flex-col items-center bg-[#232436cc] rounded-3xl border-2 border-[#19f4ff55] shadow-2xl px-10 py-8 max-w-lg mx-auto mb-5">
+            <div className="text-3xl md:text-4xl font-bold text-[#0fffc1]" style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif" }}>
+              Подписка — 990 ₽ / месяц
+            </div>
+            <div className="mt-2 mb-4 text-base text-[#defaff] text-center">
+              Все возможности без ограничений, поддержка, быстрый старт и постоянные обновления.
+            </div>
+            <a
+              href="/gpt"
+              className="mt-2 bg-[#0fffc1] hover:bg-[#19f4ff] text-black font-bold rounded-xl px-8 py-4 text-xl shadow-lg transition-all"
+              style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif", letterSpacing: "0.03em" }}
+            >
+              Перейти в RuptorGPT
+            </a>
           </div>
-          <a
-            href="https://t.me/ruptorgpt_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 px-8 py-4 rounded-full bg-[#11eefa] text-[#181922] font-bold text-xl transition hover:bg-[#47f9fd] shadow-lg font-[var(--font-geist)]"
-          >
-            Написать RuptorGPT
-          </a>
         </section>
+      </main>
+    </div>
+  );
+}
 
-        {/* Кратко о продукте */}
-        <footer className="mt-6 text-[#9ea6bb] text-center text-base max-w-2xl font-[var(--font-geist)]">
-          RuptorGPT — твой AI без лишних слов. Просто, быстро, честно.<br />
-          Присоединяйся к Ruptor-сообществу уже сегодня!
-        </footer>
-      </div>
+// Карточка Преимущества
+function AdvCard({ icon, title, text }: { icon: string; title: string; text: string }) {
+  return (
+    <div className="bg-[#222a36cc] backdrop-blur-lg rounded-2xl border border-[#19f4ff44] shadow-xl flex flex-col items-center py-8 px-4 min-h-[170px] hover:scale-105 transition-all group">
+      <span className="text-4xl mb-2">{icon}</span>
+      <div className="font-extrabold text-[#0fffc1] text-lg mb-1" style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif" }}>{title}</div>
+      <div className="text-[#eaf9ff] text-center text-base font-[var(--font-geist)]">{text}</div>
+    </div>
+  );
+}
+
+// Карточка “Как помогает”
+function FeatureCard({ icon, title, text }: { icon: string; title: string; text: string }) {
+  return (
+    <div className="bg-[#1e2531cc] backdrop-blur-md rounded-2xl border border-[#0fffc188] shadow-lg flex flex-col items-center py-8 px-5 min-h-[200px] hover:scale-105 transition-all">
+      <span className="text-5xl mb-2">{icon}</span>
+      <div className="font-extrabold text-[#11eefa] text-lg mb-1" style={{ fontFamily: "'Orbitron', 'Geist', Arial, sans-serif" }}>{title}</div>
+      <div className="text-[#eaf9ff] text-center text-base font-[var(--font-geist)]">{text}</div>
     </div>
   );
 }
